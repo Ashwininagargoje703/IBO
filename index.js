@@ -40,7 +40,7 @@ const listOfProducts = [{
 let obj = {};
 
 for(let i=0; i<listOfProducts.length;i++){
-    obj[listOfProducts[i].productName]?obj[listOfProducts[i].productName] +=1: obj[listOfProducts[i].productName] = 1;
+    obj[listOfProducts[i].productName]?obj[listOfProducts[i].productName]++: obj[listOfProducts[i].productName] = 1;
 }
 
 console.log(obj)
