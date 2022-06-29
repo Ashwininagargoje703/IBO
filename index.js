@@ -70,15 +70,38 @@ console.log(obj)
 //   }
 // ]
 
-function getUniqueProducts(listOfProducts) {
-    const uniqueproducts = Object.values(
-      listOfProducts.reduce((r, { productName, quantity, description }) => {
-        r[productName] = r[productName] || { productName, description, quantity: 0 };
-        r[productName].quantity += quantity;
-        return r;
-      }, {})
-    );
-    console.log(uniqueproducts);
-  }
-  console.log(getUniqueProducts(listOfProducts));
+// function getUniqueProducts(listOfProducts) {
+//     const uniqueproducts = Object.values(
+//       listOfProducts.reduce((r, { productName, quantity, description }) => {
+//         r[productName] = r[productName] || { productName, description, quantity: 0 };
+//         r[productName].quantity += quantity;
+//         return r;
+//       }, {})
+//     );
+//     console.log(uniqueproducts);
+//   }
+//   console.log(getUniqueProducts(listOfProducts));
   
+let uniqueProducts = [];
+
+listOfProducts.filter(function(product) {
+    if (uniqueProducts.find(function(uniqueProduct) {
+        return uniqueProduct.productName === product.productName;
+        }
+        )
+        ) 
+        {
+            uniqueProducts.find(function(uniqueProduct) {
+            if (uniqueProduct.productName === product.productName) {
+                uniqueProduct.quantity += product.quantity;
+            }
+            }
+            )
+        }
+        else {
+            uniqueProducts.push(product);
+        }
+    }
+    );
+
+    console.log(uniqueProducts);
